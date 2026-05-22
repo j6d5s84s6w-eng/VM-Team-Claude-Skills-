@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2x3 Signage Skill — VM Team</title>
+    <style>
+      body { font-family: -apple-system, sans-serif; max-width: 760px; margin: 60px auto; padding: 0 24px; color: #1d1d1f;
+  line-height: 1.7; }
+      h1 { font-size: 28px; margin-bottom: 4px; }
+      h2 { font-size: 13px; font-weight: 500; color: #6e6e73; margin-top: 0; letter-spacing: 0.02em; }
+      h3 { font-size: 18px; border-top: 1px solid #e5e5ea; padding-top: 32px; margin-top: 40px; }
+      .step { display: flex; gap: 16px; margin: 24px 0; }
+      .step-num { background: #000; color: #fff; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center;
+   justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+      .step-body strong { display: block; margin-bottom: 4px; }
+      code { background: #f5f5f7; padding: 2px 6px; border-radius: 4px; font-size: 13px; font-family: monospace; }
+      .note { background: #f5f5f7; border-left: 3px solid #000; padding: 12px 16px; border-radius: 4px; font-size: 14px; margin:
+  16px 0; }
+      table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; }
+      th { text-align: left; padding: 10px 12px; background: #f5f5f7; font-weight: 600; }
+      td { padding: 10px 12px; border-top: 1px solid #e5e5ea; vertical-align: top; }
+      td code { font-size: 12px; }
+    </style>
+  </head>
+  <body>
+
+    <h1>2×3 Signage Skill</h1>
+    <h2>Setup &amp; Usage Guide — VM Team</h2>
+
+    <h3>Part 1 — One-Time Setup</h3>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>Make sure Claude Code is installed</strong>
+        Open your terminal and type <code>claude --version</code>. If you see a version number, you're good. If not, install Claude
+   Code first.
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>Get the skill file from Omaira</strong>
+        You'll receive a file called <code>signage.md</code> — save it somewhere you can find it (Desktop is fine for now).
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>Place it in the Claude commands folder</strong>
+        Open Finder, then in the menu bar click <strong>Go → Go to Folder</strong> (or press <code>Shift + Cmd + G</code>).<br><br>
+        Type <code>~/.claude/commands/</code> and press Enter.<br><br>
+        Drag the <code>signage.md</code> file into this folder.
+        <div class="note">Folder doesn't exist? Go to <code>~/.claude/</code> first, create a new folder called
+  <code>commands</code>, then drop the file in.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <strong>Make sure you have the Python script</strong>
+        You'll need <code>apply_languages_new.py</code> saved on your Mac. Ask Omaira for the file path if you're unsure where it
+  lives on your machine.
+      </div>
+    </div>
+  
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <strong>Restart Claude Code</strong>
+        Close and reopen Claude Code — it picks up new skills on startup.
+      </div>
+    </div>
+
+    <h3>Part 2 — Using the Skill</h3>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>Type /signage in Claude Code</strong>
+        The skill will load and prompt you to fill in your variables.
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>Fill in the variables</strong>
+        <table>
+          <tr><th>Variable</th><th>Description</th><th>Example</th></tr>
+          <tr><td>Fixture Count File</td><td>Full path to your WW fixture count Excel
+  file</td><td><code>/Users/you/Desktop/JUN26_Fixture.xlsx</code></td></tr>
+          <tr><td>WW Fixture Counts Tab</td><td>Exact name of the tab in the file</td><td><code>WW Fixture Counts
+  JUN26</code></td></tr>
+          <tr><td>Country / Store Override</td><td>Any rule changes for this run</td><td>omit if no changes</td></tr>
+          <tr><td>Output File Name</td><td>What to name the generated output
+  file</td><td><code>JUN26_Signage_Output</code></td></tr>
+          <tr><td>Primary Language Column</td><td>Manually add this column to your Fixture Count file before running</td><td>Add to
+   file first</td></tr>
+          <tr><td>Secondary Language Column</td><td>Manually add this column to your Fixture Count file before running</td><td>Add
+  to file first</td></tr>
+        </table>
+        <div class="note"><strong>China Division Note:</strong> Stores in China are automatically split into two divisions —
+  Shanghai and Beijing. Make sure your GLS sheet includes the China division column so the lookup works correctly.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>Hit Enter — Claude does the rest</strong>
+        Claude will run <code>apply_languages_new.py</code> with your inputs and generate the output file automatically.
+      </div>
+    </div>
+
+  </body>
+  </html>
